@@ -1,0 +1,35 @@
+{
+  "name": "intro-to-backend",
+  "version": "1.0.0",
+  "description": "intro to backend",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hmoustaphaousmane/intro-to-backend.git"
+  },
+  "keywords": [
+    "backend",
+    "nodejs",
+    "express",
+    "mongodb"
+  ],
+  "author": "Hassane",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hmoustaphaousmane/intro-to-backend/issues"
+  },
+  "homepage": "https://github.com/hmoustaphaousmane/intro-to-backend#readme",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mongoose": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
