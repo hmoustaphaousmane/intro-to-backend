@@ -3,11 +3,13 @@ import express from "express";
 // routes imports
 import userRouter from "./routes/user.route.js";
 import postRouter from "./routes/post.route.js";
+import { errorHandler } from "./middlewares/error.middleware.js";
 
 const app = express(); // create an express app
 
 // Middlewares
 app.use(express.json());
+app.use(errorHandler)
 
 // routes declaration
 app.use("/api/v1/users", userRouter);

@@ -12,10 +12,7 @@ const createPost = async (req, res, next) => {
 
     res.status(201).json({ message: "Post created successfully", post });
   } catch (error) {
-    console.log(error);
-    res
-      .status(500)
-      .json({ message: "Internal server error!", error: error.message });
+    next(error);
   }
 };
 
@@ -26,10 +23,7 @@ const getPosts = async (req, res, next) => {
 
     res.status(200).json({ posts });
   } catch (error) {
-    console.log(error);
-    res
-      .status(500)
-      .json({ message: "Internal server error!", error: error.message });
+    next(error);
   }
 };
 
@@ -47,10 +41,7 @@ const updatePost = async (req, res, next) => {
 
     res.status(200).json({ messages: "Post updated successfully.", post });
   } catch (error) {
-    console.log(error);
-    res
-      .status(500)
-      .json({ message: "Internal server error!", error: error.message });
+    next(error);
   }
 };
 
@@ -62,10 +53,7 @@ const deletePost = async (req, res, next) => {
 
     res.status(200).json({ message: "Post successfully deleted." });
   } catch (error) {
-    console.log(error);
-    res
-      .status(500)
-      .json({ message: "Internal server error!", error: error.message });
+    next(error);
   }
 };
 

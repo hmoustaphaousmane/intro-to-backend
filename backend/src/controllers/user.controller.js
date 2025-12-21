@@ -32,10 +32,7 @@ const registerUser = async (req, res, next) => {
       user: { id: user._id, email: user.email, username: user.username },
     });
   } catch (error) {
-    console.log(error);
-    res
-      .status(500)
-      .json({ message: "Internal server error!", error: error.message });
+    next(error);
   }
 };
 
@@ -62,10 +59,7 @@ const loginUser = async (req, res, next) => {
       },
     });
   } catch (error) {
-    console.log(error);
-    res
-      .status(500)
-      .json({ message: "Internal server error!", error: error.message });
+    next(error);
   }
 };
 
@@ -81,10 +75,7 @@ const logoutUser = async (req, res, next) => {
       message: "Logout successful.",
     });
   } catch (error) {
-    console.log(error);
-    res
-      .status(500)
-      .json({ message: "Internal server error!", error: error.message });
+    next(error);
   }
 };
 export { registerUser, loginUser, logoutUser };
