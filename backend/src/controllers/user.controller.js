@@ -1,5 +1,4 @@
-import { User } from "../models/user.model.js";
-import bcrypt from "bcrypt";
+import { createUser, getUserByEmail } from "../services/user.service.js";
 
 const registerUser = async (req, res, next) => {
   try {
@@ -11,16 +10,13 @@ const registerUser = async (req, res, next) => {
     }
 
     // check if user exists already
-    const existing = await User.findOne({ email: email.toLowerCase() });
+    const existing = await getUserByEmail(email);
     if (existing) {
       return res.status(400).json({ message: "User already exists!" });
     }
 
-    // hash the password
-    // const hash = bcrypt.hashSync(password, 10);
-
     // create user
-    const user = await User.create({
+    const user = await createUser({
       username,
       email: email.toLowerCase(),
       password,
@@ -41,7 +37,7 @@ const loginUser = async (req, res, next) => {
     const { email, password } = req.body;
 
     // check if user exists
-    const user = await User.findOne({ email: email.toLowerCase() });
+    const user = await getUserByEmail(email);
 
     if (!user) return res.status(400).json({ message: "User not found." });
 
@@ -67,7 +63,7 @@ const logoutUser = async (req, res, next) => {
   try {
     const { email } = req.body;
 
-    const user = await User.findOne({ email: email.toLowerCase() });
+    const user = await getUserByEmail(email);
 
     if (!user) return res.status(404).json({ message: "User not found." });
 
