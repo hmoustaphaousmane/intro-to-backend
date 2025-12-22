@@ -1,4 +1,5 @@
 import express from "express";
+import morgan from "morgan";
 
 // routes imports
 import userRouter from "./routes/user.route.js";
@@ -9,7 +10,9 @@ const app = express(); // create an express app
 
 // Middlewares
 app.use(express.json());
-app.use(errorHandler)
+app.use(morgan("dev"));
+
+app.use(errorHandler);
 
 // routes declaration
 app.use("/api/v1/users", userRouter);
