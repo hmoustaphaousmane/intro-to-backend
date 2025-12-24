@@ -12,10 +12,11 @@ const app = express(); // create an express app
 app.use(express.json());
 app.use(morgan("dev"));
 
-app.use(errorHandler);
-
 // routes declaration
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/posts", postRouter);
+
+// Error handler middleware
+app.use(errorHandler);
 
 export default app;
